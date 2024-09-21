@@ -22,7 +22,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="container mx-auto fixed top-0 left-0 right-0 bg-white shadow-lg z-20 p-5 flex justify-between items-center">
+            <nav className="container mx-auto fixed top-0 left-0 right-0 bg-white shadow-lg z-10 p-5 flex justify-between items-center">
                 <div className="text-black/80 text-3xl font-bold font-sans">
                     <Link href="/" className="hover:text-gray-300 transition duration-300">ROSE.</Link>
                 </div>

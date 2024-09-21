@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Custom Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  /* ความกว้างของ Scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9b9b9b;
+  /* สีของ Scrollbar */
+  border-radius: 6px;
+  /* ความโค้งของมุม Scrollbar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b6b6b6;
+  /* สีของ Scrollbar เมื่อ hover */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  /* สีพื้นหลังของ Scrollbar */
+
+}
+
+/* เพิ่มการเปลี่ยนแปลงสีของข้อความที่ถูกเลือก */
+::selection {
+  background-color: transparent;
+  /* สีพื้นหลังที่เลือก */
+  color: #f30049;
+  /* สีของข้อความที่เลือก */
+  text-shadow: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    /* ขนาดที่เล็กลง */
+  }
+}
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
+    /* ขนาดที่เล็กลงสำหรับมือถือ */
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    /* ปรับ padding */
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Poppins', sans-serif;
+  /* Use Poppins as default */
+}

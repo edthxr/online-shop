@@ -13,7 +13,7 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto py-12">
-      <h2 className="text-3xl mb-6 text-center">Shopping Cart</h2>
+      <h2 className="text-3xl mb-6 text-center">รายการสินค้า</h2>
       <table className="min-w-full border-collapse border border-gray-300">
         <thead>
           <tr>

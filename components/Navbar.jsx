@@ -24,7 +24,7 @@ export default function Navbar() {
         <>
             <nav className="container mx-auto fixed top-0 left-0 right-0 bg-white shadow-lg z-10 p-5 flex justify-between items-center">
                 <div className="text-black/80 text-3xl font-bold font-sans">
-                    <Link href="/" className="hover:text-gray-300 transition duration-300">SHOP.</Link>
+                    <Link href="/" className="hover:text-gray-300 transition duration-300"> WUTTINAN CAFE.</Link>
                 </div>
 
                 {/* Hamburger Icon for Mobile */}
@@ -44,10 +44,10 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <ul className={`hidden md:flex md:space-x-8 text-black font-sans text-lg font-thin`}>
                     <li className="my-2">
-                        <Link href="/" className="hover:text-gray-300 transition duration-300">Home</Link>
+                        <Link href="/" className="hover:text-gray-300 transition duration-300">หน้าหลัก</Link>
                     </li>
                     <li className="my-2">
-                        <Link href="/" onClick={handleScrollToProducts} className="hover:text-gray-300 transition duration-300">Products</Link>
+                        <Link href="/" onClick={handleScrollToProducts} className="hover:text-gray-300 transition duration-300">เครื่องดื่ม</Link>
                     </li>
                     <li className="my-2 flex items-center">
                         <Link href="/Cart" className="hover:text-gray-300 transition duration-300 relative">
@@ -60,7 +60,7 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li className="my-2">
-                        <Link href="/contact" className="hover:text-gray-700 transition duration-300">Contact</Link>
+                        <Link href="/contact" className="hover:text-gray-700 transition duration-300">ติดต่อ</Link>
                     </li>
                 </ul>
             </nav>

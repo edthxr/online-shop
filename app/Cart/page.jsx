@@ -53,11 +53,11 @@ const Cart = () => {
 
     return (
         <div className={`container mx-auto py-12 pt-[100px] bg-white shadow-md rounded-lg p-6 transition-opacity duration-500 ${showCart ? "opacity-100" : "opacity-0"}`}>
-            <h2 className="text-3xl mb-6 text-center tracking-wide text-gray-800">Shopping Cart</h2>
+            <h2 className="text-3xl mb-6 text-center tracking-wide text-gray-800">รายการสินค้า</h2>
             {cart.length === 0 ? (
                 <div className="text-center text-gray-600">
-                    <p className="mb-8 ">Your cart is empty.</p>
-                    <Link href="/" className="text-black/70 font-extrabold hover:underline">Go back to shopping</Link>
+                    <p className="mb-8 ">ไม่มีสินค้าที่คุณเลือก.</p>
+                    <Link href="/" className="text-black/70 font-extrabold hover:underline">สั่งรายการ</Link>
                 </div>
             ) : (
                 <>

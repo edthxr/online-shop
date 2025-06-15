@@ -58,7 +58,7 @@ const Cart = () => {
             {cart.length === 0 ? (
                 <div className="text-center text-gray-600">
                     <p className="mb-8 ">ไม่มีสินค้าที่คุณเลือก.</p>
-                    <Link href="/" className="text-black/70 font-extrabold hover:underline">สั่งรายการ</Link>
+                    <Link href="/" className="text-black/70 font-extrabold hover:underline">ซื้อเลย ทีนี่</Link>
                 </div>
             ) : (
                 <>

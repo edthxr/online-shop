@@ -39,10 +39,11 @@
 ::selection {
   background-color: transparent;
   /* สีพื้นหลังที่เลือก */
-  color: #f30049;
+  color: #2d2d2d;
   /* สีของข้อความที่เลือก */
   text-shadow: none;
 }
+
 
 html,
 body {
@@ -50,6 +51,7 @@ body {
   padding: 0;
   height: auto;
   font-family: "Outfit", sans-serif;
+  background-color: #f5f5f5;
 }
 
 * {
@@ -72,20 +74,6 @@ body {
     /* ขนาดที่เล็กลง */
   }
 }
-
-@keyframes cart-bump {
-  0% { transform: scale(1); }
-  20% { transform: scale(1.2); }
-  50% { transform: scale(0.95); }
-  70% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.cart-bump {
-  animation: cart-bump 300ms ease-out;
-}
-
-
 
 @media (max-width: 640px) {
   h1 {

@@ -1,114 +1,114 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../components/CartContext";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const { totalQuantity, isCartBumping } = useCart();
-    const { getTotalQuantity } = useCart();
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+  const [isOpen, setIsOpen] = useState(false);
+  const { totalQuantity, isCartBumping } = useCart();
 
-    const handleScrollToProducts = () => {
-        setTimeout(() => {
-            const featuredProducts = document.getElementById("featured-products");
-            if (featuredProducts) {
-                featuredProducts.scrollIntoView({ behavior: "smooth" });
-            }
-        }, 100);
-    };
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-    return (
-        <>
-            <nav className="container mx-auto fixed top-0 left-0 right-0 bg-white border-b z-10  flex justify-between items-center">
-                <div className="text-black/80 text-3xl font-bold font-sans">
-                    <Link href="/" className="hover:text-gray-300 transition duration-300"></Link>
-                </div>
+  const handleScrollToProducts = () => {
+    setTimeout(() => {
+      const featuredProducts = document.getElementById("featured-products");
+      if (featuredProducts) {
+        featuredProducts.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
 
+  return (
+    <>
+      <nav className="w-full fixed top-0 left-0 right-0 bg-white border-b z-50">
+        <div className="max-w-[1320px] mx-auto flex justify-between items-center px-4 py-3">
+          {/* Logo or Brand Name */}
+          <div className="text-black/80 text-2xl font-bold font-sans">
+            <Link href="/" className="hover:text-gray-400 transition duration-300">
+              
+            </Link>
+          </div>
 
-                {/* Hamburger Icon for Mobile */}
-                <div className="md:hidden" onClick={toggleMenu}>
-                    <div className="space-y-2 cursor-pointer relative">
-                        <span className="block w-8 h-0.5 bg-black"></span>
-                        <span className="block w-8 h-0.5 bg-black"></span>
-                        <span className="block w-8 h-0.5 bg-black"></span>
-                        {getTotalQuantity() > 0 && (
-                            <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                                {getTotalQuantity()}
-                            </span>
-                        )}
-                    </div>
-                </div>
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex space-x-6 text-black font-sans text-base items-center">
+            <li>
+              <Link href="/" className="hover:text-gray-500 transition duration-300">Home</Link>
+            </li>
+            <li>
+              <button onClick={handleScrollToProducts} className="hover:text-gray-500 transition duration-300">
+                Products
+              </button>
+            </li>
+            <li className="relative">
+              <Link href="/Cart" className="hover:text-gray-500 transition duration-300 flex items-center gap-1">
+                <FaShoppingCart className={`text-xl ${isCartBumping ? "cart-bump" : ""}`} />
+                {totalQuantity > 0 && (
+                  <span className="absolute -top-2 -right-3 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {totalQuantity}
+                  </span>
+                )}
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="hover:text-gray-500 transition duration-300">Contact</Link>
+            </li>
+          </ul>
 
-                {/* Desktop Menu */}
-                <ul className={`hidden md:flex md:space-x-8 text-black font-sans text-lg font-thin`}>
-                    <li className="my-2">
-                        <Link href="/" className="hover:text-gray-300 transition text-sm duration-300">Home</Link>
-                    </li>
-                    <li className="my-2">
-                        <Link href="/" onClick={handleScrollToProducts} className="hover:text-gray-300 transition   text-sm duration-300">Products</Link>
-                    </li>
+          {/* Hamburger Icon */}
+          <div className="md:hidden">
+            <button onClick={toggleMenu} className="relative flex flex-col space-y-1">
+              <span className="w-6 h-0.5 bg-black" />
+              <span className="w-6 h-0.5 bg-black" />
+              <span className="w-6 h-0.5 bg-black" />
+              {totalQuantity > 0 && (
+                <span className="absolute -top-2 -right-3 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                  {totalQuantity}
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
+      </nav>
 
-
-                    <li className="my-2 flex items-center">
-                        <Link href="/Cart" className="hover:text-gray-300 transition duration-300 relative">
-                      <FaShoppingCart className={`text-2xl ${isCartBumping ? "cart-bump" : ""}`} />
-                            {getTotalQuantity() > 0 && (
-                                <span className="absolute -top-1 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                                    {getTotalQuantity()}
-                                </span>
-                            )}
-                        </Link>
-                    </li>
-
-
-                    <li className="my-2">
-                        <Link href="/contact" className="hover:text-gray-700 transition  text-sm duration-300">Contact</Link>
-                    </li>
-                </ul>
-            </nav>
-
-            {isOpen && (
-                <div className="fixed inset-x-0 top-0 bg-white z-30 p-5 flex flex-col items-center shadow-lg h-1/2">
-                    <div className="w-full flex justify-between items-center mb-5">
-                        <h2 className="text-xl font-bold text-black">Menu</h2>
-                        <button onClick={toggleMenu} className="text-black text-2xl">×</button>
-                    </div>
-                    <ul className="space-y-4 w-full">
-                        <li>
-                            <Link href="/" className="block py-2 text-center text-lg text-black hover:text-gray-800 transition" onClick={toggleMenu}>Home</Link>
-                        </li>
-                        <li>
-                            <Link href="/" onClick={(e) => {
-                                handleScrollToProducts(e);
-                                toggleMenu();
-                            }} className="block py-2 text-center text-lg text-black hover:text-gray-800 transition duration-300">Products</Link>
-                        </li>
-                        <li>
-                            <Link href="/Cart" className="block py-2 text-center text-lg text-black hover:text-gray-800 transition flex justify-center items-center" onClick={toggleMenu}>
-                                <FaShoppingCart className="mr-2 text-2xl" />
-                                Cart
-                                
-                    {totalQuantity > 0 && (
-  <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-    {totalQuantity}
-  </span>
-)}
-
-
-
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/contact" className="block py-2 text-center text-lg text-black hover:text-gray-800 transition duration-300" onClick={toggleMenu}>Contact</Link>
-                        </li>
-                    </ul>
-                </div>
-            )}
-
-        </>
-    );
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="fixed top-0 left-0 right-0 bg-white z-40 shadow-md md:hidden">
+          <div className="flex justify-between items-center px-4 py-3 border-b">
+            <h2 className="text-xl font-semibold text-black">Menu</h2>
+            <button onClick={toggleMenu} className="text-black text-2xl">×</button>
+          </div>
+          <ul className="flex flex-col gap-3 px-6 py-4 text-lg">
+            <li>
+              <Link href="/" onClick={toggleMenu} className="block py-2 text-black hover:text-gray-800">Home</Link>
+            </li>
+            <li>
+              <button onClick={() => {
+                handleScrollToProducts();
+                toggleMenu();
+              }} className="block py-2 text-black hover:text-gray-800 w-full text-left">
+                Products
+              </button>
+            </li>
+            <li>
+              <Link href="/Cart" onClick={toggleMenu} className="flex items-center gap-2 py-2 text-black hover:text-gray-800">
+                <FaShoppingCart className="text-xl" />
+                Cart
+                {totalQuantity > 0 && (
+                  <span className="ml-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {totalQuantity}
+                  </span>
+                )}
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" onClick={toggleMenu} className="block py-2 text-black hover:text-gray-800">Contact</Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </>
+  );
 }

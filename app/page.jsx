@@ -1,5 +1,6 @@
 "use client";
 import "./globals.css";
+import dynamic from 'next/dynamic';
 import { useCart } from "../components/CartContext";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
@@ -7,10 +8,10 @@ import Link from "next/link";
 
 const products = [
   { id: 1, name: "NO RICH", price: 399, imageUrl: "/photo/photo1 (1).png", description: "" },
-  { id: 2, name: "P9D COLLECTION - White", price: 699, imageUrl: "/photo/photo2.png", description: "" },
-  { id: 3, name: "FREE", price: 69, imageUrl: "/photo/photo3.png", description: "" },
-  { id: 4, name: "FREE", price: 89, imageUrl: "/photo/1.png", description: "" },
-  { id: 7, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 2, name: "P9D COLLECTION", price: 699, imageUrl: "/photo/photo2.png", description: "" },
+  { id: 7, name: "NO RISK NO RICH - BLACK", price: 1390, imageUrl: "/photo/no2.png", description: "" },
+  { id: 3, name: "NO RISK HOODIE SS20", price: 6900, imageUrl: "/photo/ss2.png", description: "" },
+  { id: 4, name: "NEVER LIE", price: 89, imageUrl: "/photo/1.png", description: "" },
   { id: 8, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
 ];
 
@@ -28,6 +29,14 @@ export default function Home() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
+  const Footer = dynamic(() => import('../components/Footer'), { ssr: false, loading: () => <SkeletonLoader /> });
+
+  const SkeletonLoader = () => (
+  <div className="flex items-center justify-center h-screen bg-gray-100"> {/* เพิ่ม bg-gray-100 เพื่อให้เห็นวงกลมชัดเจน */}
+    <div className="h-16 w-16 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+  </div>
+  );
+
 
   useEffect(() => {
     const timer = setTimeout(() => setShowBanner(true), 1000);
@@ -125,8 +134,8 @@ return (
           {product.name}
         </h3>
         
-        <p className=" text-xs text-gray-600">
-          ฿{product.price.toLocaleString()}
+        <p className=" text-sm text-black">
+          ฿ {product.price.toLocaleString()} THB
         </p>
 
         {/* Rating */}
@@ -143,6 +152,8 @@ return (
   ))}
 </div>
 </main>
+
+
 
 
 );

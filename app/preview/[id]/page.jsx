@@ -2,18 +2,16 @@
 import { useCart } from "@/components/CartContext";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaArrowLeft } from "react-icons/fa";
 
 const products = [
-  { id: 1, name: "NO RICH", price: 399, imageUrl: "/photo/photo1 (1).png", description: "เสื้อยืดผ้าดี สวมใส่สบาย" },
-  { id: 2, name: "P9D COLLECTION - White", price: 699, imageUrl: "/photo/photo2.png", description: "ดีไซน์สไตล์สตรีทเท่ ๆ" },
-  { id: 3, name: "FREE", price: 69, imageUrl: "/photo/photo3.png", description: "เสื้อฟรีสุดคิวท์ของคอลใหม่" },
-  { id: 4, name: "FREE", price: 89, imageUrl: "/photo/1.png", description: "รุ่นยอดนิยมขายดีอันดับต้น ๆ" },
-  { id: 7, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "วัสดุดี สีดำคลาสสิก" },
-  { id: 8, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "สินค้ารุ่นลิมิเต็ด" },
+  { id: 1, name: "NO RICH", price: 399, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 2, name: "P9D COLLECTION", price: 699, imageUrl: "/photo/photo2.png", description: "" },
+  { id: 7, name: "NO RISK NO RICH - BLACK", price: 1390, imageUrl: "/photo/no2.png", description: "" },
+  { id: 3, name: "NO RISK HOODIE SS20", price: 6900, imageUrl: "/photo/ss2.png", description: "" },
+  { id: 4, name: "NEVER LIE", price: 89, imageUrl: "/photo/1.png", description: "" },
+  { id: 8, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
 ];
-
-
 
 export default function PreviewPage() {
   const { addToCart } = useCart();
@@ -22,7 +20,6 @@ export default function PreviewPage() {
   const [product, setProduct] = useState(null);
   const [notification, setNotification] = useState("");
 
-
   useEffect(() => {
     const found = products.find((p) => p.id === parseInt(id));
     setProduct(found);
@@ -30,41 +27,55 @@ export default function PreviewPage() {
 
   if (!product) return <div className="p-10">Loading...</div>;
 
+  const goBack = () => router.back();
+
   const goToCart = () => {
     router.push("/Cart");
   };
 
-    const handleAddToCart = (product) => {
+  const handleAddToCart = (product) => {
     addToCart(product);
     setNotification(`${product.name} added to cart!`);
     setTimeout(() => setNotification(""), 3000);
   };
 
-
   return (
-    <div className="p-6 md:p-12 flex mt-20 flex-col md:flex-row gap-10 items-start max-w-5xl mx-auto">
+    <div className="p-6 md:p-12 flex  mt-20 flex-col md:flex-row gap-10 items-start max-w-5xl mx-auto">
       {/* Left: Product Image */}
-      <div className="w-full md:w-1/2">
+      <div className="w-full md:w-1/2  text-white group cursor-move relative">
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-auto object-contain rounded-lg shadow-md"
+          className="w-full  object-contain rounded-lg transition-transform duration-300 group-hover:scale-110 group-hover:contrast-125 outline-none focus:outline-none"
         />
       </div>
 
       {/* Right: Product Details */}
       <div className="w-full md:w-1/2 space-y-5">
         <h1 className="text-3xl font-bold text-black">{product.name}</h1>
-        <p className="text-xl text-pink-600">฿{product.price.toLocaleString()}</p>
+        <p className="text-lg text-gray-500 font-sm">฿ {product.price.toLocaleString()} THB</p>
 
-        {/* Buy Button */}
-        <button
-         onClick={() => handleAddToCart(product)}
-          className="mt-4 flex items-center justify-center gap-2 bg-black text-white text-sm px-6 py-3 rounded-full hover:bg-gray-800 transition-all duration-300"
-        >
-          <FaShoppingCart />
-          ซื้อเลย
-        </button>
+        <div className="flex gap-4">
+          <button
+            onClick={goBack}
+            className="flex items-center gap-2 border border-gray-400 text-black px-5 py-2 rounded-full hover:bg-gray-100 transition"
+          >
+            <FaArrowLeft />
+            ย้อนกลับ
+          </button>
+
+          <button
+            onClick={() => handleAddToCart(product)}
+            className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition"
+          >
+            <FaShoppingCart />
+            ซื้อเลย
+          </button>
+        </div>
+
+        {notification && (
+          <div className="text-green-600 text-sm">{notification}</div>
+        )}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const products = [
   { id: 7, name: "NO RISK NO RICH - BLACK", price: 1390, imageUrl: "/photo/no2.png", description: "" },
   { id: 3, name: "NO RISK HOODIE SS20", price: 6900, imageUrl: "/photo/ss2.png", description: "" },
   { id: 4, name: "NEVER LIE", price: 89, imageUrl: "/photo/1.png", description: "" },
-  { id: 8, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 8, name: "HOODIE -REDBLACK SERIES", price: 9500, imageUrl: "/photo/hoo.png", description: "" },
 ];
 
 const bannerImages = [
@@ -76,7 +76,7 @@ export default function Home() {
 
 
 return (
-<main className="bg-white py-10 px-4 max-w-[1320px] mx-auto">
+<main className="bg-white py-10 px-4 mt-4 max-w-[1320px] mx-auto">
   <section className="w-full flex justify-end">
     <div className="flex flex-col gap-5 max-w-[1300px] p-5">
       <h1 className="text-start md:text-end font-semibold text-[18px] md:text-[33px] text-black/60">

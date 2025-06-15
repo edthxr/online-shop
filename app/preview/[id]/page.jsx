@@ -10,7 +10,7 @@ const products = [
   { id: 7, name: "NO RISK NO RICH - BLACK", price: 1390, imageUrl: "/photo/no2.png", description: "" },
   { id: 3, name: "NO RISK HOODIE SS20", price: 6900, imageUrl: "/photo/ss2.png", description: "" },
   { id: 4, name: "NEVER LIE", price: 89, imageUrl: "/photo/1.png", description: "" },
-  { id: 8, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 8, name: "HOODIE -REDBLACK SERIES", price: 9500, imageUrl: "/photo/hoo.png", description: "" },
 ];
 
 export default function PreviewPage() {

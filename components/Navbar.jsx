@@ -28,7 +28,6 @@ export default function Navbar() {
           {/* Logo or Brand Name */}
           <div className="text-black/80 text-2xl font-bold font-sans">
             <Link href="/" className="hover:text-gray-400 transition duration-300">
-              JENNY
             </Link>
           </div>
 

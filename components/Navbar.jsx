@@ -6,6 +6,7 @@ import { useCart } from "../components/CartContext";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { totalQuantity, isCartBumping } = useCart();
     const { getTotalQuantity } = useCart();
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -50,9 +51,11 @@ export default function Navbar() {
                     <li className="my-2">
                         <Link href="/" onClick={handleScrollToProducts} className="hover:text-gray-300 transition   text-sm duration-300">Products</Link>
                     </li>
+
+
                     <li className="my-2 flex items-center">
                         <Link href="/Cart" className="hover:text-gray-300 transition duration-300 relative">
-                            <FaShoppingCart className="text-2xl" />
+                      <FaShoppingCart className={`text-2xl ${isCartBumping ? "cart-bump" : ""}`} />
                             {getTotalQuantity() > 0 && (
                                 <span className="absolute -top-1 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                                     {getTotalQuantity()}
@@ -60,6 +63,8 @@ export default function Navbar() {
                             )}
                         </Link>
                     </li>
+
+
                     <li className="my-2">
                         <Link href="/contact" className="hover:text-gray-700 transition  text-sm duration-300">Contact</Link>
                     </li>
@@ -85,11 +90,16 @@ export default function Navbar() {
                         <li>
                             <Link href="/Cart" className="block py-2 text-center text-lg text-black hover:text-gray-800 transition flex justify-center items-center" onClick={toggleMenu}>
                                 <FaShoppingCart className="mr-2 text-2xl" />
-                                Cart {getTotalQuantity() > 0 && (
-                                    <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                                        {getTotalQuantity()}
-                                    </span>
-                                )}
+                                Cart
+                                
+                    {totalQuantity > 0 && (
+  <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+    {totalQuantity}
+  </span>
+)}
+
+
+
                             </Link>
                         </li>
                         <li>

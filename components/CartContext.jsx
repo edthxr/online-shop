@@ -5,6 +5,8 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
+    const [isCartBumping, setIsCartBumping] = useState(false); 
+    const [totalQuantity, setTotalQuantity] = useState(0);
 
     const addToCart = (item) => {
         const existingItem = cart.find(cartItem => cartItem.id === item.id);
@@ -19,6 +21,8 @@ export const CartProvider = ({ children }) => {
         } else {
             setCart((prev) => [...prev, { ...item, quantity: 1 }]);
         }
+        setIsCartBumping(true);
+        setTimeout(() => setIsCartBumping(false), 300); // animation duration
     };
 
     const removeFromCart = (id) => {
@@ -38,7 +42,7 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, getTotalQuantity }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, getTotalQuantity,totalQuantity, isCartBumping  }}>
             {children}
         </CartContext.Provider>
     );

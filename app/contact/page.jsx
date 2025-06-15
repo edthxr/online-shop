@@ -32,7 +32,7 @@ const Contact = () => {
     };
 
     return (
-        <div className={`container  mx-auto py-12 pt-[100px] bg-white shadow-md rounded-lg p-6 transition-opacity duration-500 ${showContact ? "opacity-100" : "opacity-0"}`}>
+      <div className="bg-white py-10 px-4 max-w-[1320px] mx-auto">
             <h2 className="text-3xl mb-6 text-center tracking-wide mt-[30px] text-gray-800">Contact Us</h2>
             {submitted && <p className="text-green-500 text-center mb-4">Your message has been sent!</p>}
             <form onSubmit={handleSubmit} className="space-y-4">

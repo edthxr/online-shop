@@ -73,6 +73,20 @@ body {
   }
 }
 
+@keyframes cart-bump {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.2); }
+  50% { transform: scale(0.95); }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.cart-bump {
+  animation: cart-bump 300ms ease-out;
+}
+
+
+
 @media (max-width: 640px) {
   h1 {
     font-size: 2rem;

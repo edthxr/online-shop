@@ -52,8 +52,9 @@ const Cart = () => {
     const lineShareURL = `https://line.me/ti/p/@373uupuu`;
 
     return (
-        <div className={`container mx-auto py-12 pt-[100px] bg-white shadow-md rounded-lg p-6 transition-opacity duration-500 ${showCart ? "opacity-100" : "opacity-0"}`}>
-            <h2 className="text-3xl mb-6 text-center tracking-wide text-gray-800">รายการสินค้า</h2>
+        <div className="bg-white py-10 px-4 max-w-[1320px] mx-auto">
+        {/* <div className={` mx-auto px-4 max-w-[1320px]  bg-white shadow-md rounded-lg p-6 transition-opacity duration-500 ${showCart ? "opacity-100" : "opacity-0"}`}> */}
+            <h2 className="text-3xl mb-6 mt-6 text-center tracking-wide text-gray-800">รายการสินค้า</h2>
             {cart.length === 0 ? (
                 <div className="text-center text-gray-600">
                     <p className="mb-8 ">ไม่มีสินค้าที่คุณเลือก.</p>

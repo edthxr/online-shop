@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -15,7 +17,6 @@
   width: 8px;
   /* ความกว้างของ Scrollbar */
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: #9b9b9b;
   /* สีของ Scrollbar */
@@ -48,6 +49,7 @@ body {
   margin: 0;
   padding: 0;
   height: auto;
+  font-family: "Outfit", sans-serif;
 }
 
 * {
@@ -83,9 +85,3 @@ body {
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Poppins', sans-serif;
-  /* Use Poppins as default */
-}

@@ -5,12 +5,14 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 const products = [
-  { id: 1, name: "อเมริกาโน่", price: 60, imageUrl: "/photo/photo1.png", description: "" },
-  { id: 2, name: "น้ำผลไม้", price: 69, imageUrl: "/photo/photo2.png", description: "" },
-  { id: 3, name: "นม", price: 69, imageUrl: "/photo/photo3.png", description: "" },
-  { id: 4, name: "เค้ก", price: 89, imageUrl: "/photo/photo4.png", description: "" },
-  { id: 5, name: "ขนมปังปิ้ง", price: 89, imageUrl: "/photo/photo5.png", description: "" },
-  { id: 6, name: "คุกกี้", price: 95, imageUrl: "/photo/photo6.png", description: "" },
+  { id: 1, name: "NO RICH", price: 399, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 2, name: "P9D COLLECTION - White", price: 699, imageUrl: "/photo/photo2.png", description: "" },
+  { id: 3, name: "FREE", price: 69, imageUrl: "/photo/photo3.png", description: "" },
+  { id: 4, name: "FREE", price: 89, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 5, name: "FREE", price: 89, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 6, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 7, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
+  { id: 8, name: "FREE", price: 95, imageUrl: "/photo/photo1 (1).png", description: "" },
 ];
 
 const bannerImages = [
@@ -65,71 +67,80 @@ export default function Home() {
 
 
 
-  return (
-    <div>
-      <div className="container mx-auto ">
-        {/* Notification Section */}
-        {notification && (
-          <div className="fixed top-[80px] left-1/2 transform -translate-x-1/2 max-w-sm w-full bg-[#979797] text-[#FFFFFF] p-4 rounded-lg shadow-md z-50 transition-opacity duration-300 text-center">
-            {notification}
-          </div>
-        )}
+return (
+<main className="bg-white py-10 px-4 max-w-7xl mx-auto">
+  <section className="w-full flex justify-end">
+    <div className="flex flex-col gap-5 max-w-[1300px] p-5">
+      <h1 className="text-start md:text-end font-semibold text-[18px] md:text-[33px] text-black/60">
+        Discover <span className="text-black">New products to select</span>
+      </h1>
+    </div>
+  </section>
 
-        {/* Banner Section */}
-        <section className={`relative w-full overflow-hidden h-[50vh] md:h-[80vh] transition-opacity duration-500 ${showBanner ? "opacity-100" : "opacity-0"}`}>
-          <div
-            className="relative w-full h-full flex transition-transform duration-1000 ease-in-out"
-            style={{ transform: `translateX(-${(currentBanner * 100)}%)` }}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-          >
-            {bannerImages.map((banner, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${banner.url})` }}
-              >
-                <div className="relative container mx-auto h-full flex flex-col justify-center">
-                  <div className="absolute inset-0 bg-black bg-opacity-20 rounded-xl shadow-2xl text-center p-8 flex flex-col justify-center items-center">
-                    <h1 className="text-4xl md:text-6xl mb-2 font-orbitron tracking-wide font-bold text-white">
-                      {banner.caption}
-                    </h1>
-                 
-                  </div>
-                </div>
-              </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto p-4">
+  {products.map((product) => (
+    <div
+      key={product.id}
+      className="bg-white   transition-shadow duration-300 overflow-hidden group"
+    >
+      {/* Product Image Container */}
+      <div className="relative bg-[#f5f5f7] pb-5 aspect-square">
+        <Image
+          src={product.imageUrl}
+          alt={product.name}
+          width={300}
+          height={300}
+          className="w-full h-full object-contain p-4 "
+        />
+        
+        {/* Action Buttons */}
+        <div className="absolute top-4 right-4 flex flex-col gap-3">
+          <button className="w-10 h-10  border-gray-200 rounded-sm  text-black font-bold flex items-center justify-center  shadow-sm">
+            <svg className="w-5 h-5 text-black font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </button>
+          <button className="w-10 h-10  border-gray-200 rounded-sm flex items-center justify-center  shadow-sm">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Buy Now Overlay */}
+        <div className="absolute inset-x-0 bottom-0 bg-black backdrop-blur-sm text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <button className="text-sm font-medium hover:text-gray-200 transition-colors">
+            Buy Now
+          </button>
+        </div>
+      </div>
+
+      {/* Product Details */}
+      <div className="p-4 space-y-2">
+        <h3 className="text-black line-clamp-2 text-sm font-medium leading-5">
+          {product.name}
+        </h3>
+        
+        <p className=" text-xs text-gray-600">
+          ฿{product.price.toLocaleString()}
+        </p>
+
+        {/* Rating */}
+        <div className="flex items-center justify-start gap-1 pt-1">
+          <div className="flex text-gray-300">
+            {[...Array(5)].map((_, i) => (
+              <span key={i} className="text-lg">☆</span>
             ))}
           </div>
-        </section>
-
-        {/* Featured Products Section */}
-        <main id="featured-products" className="container mx-auto px-4 pt-20">
-  <h1 className={`text-center tracking-wide my-12 font-bold text-black/70 text-3xl transition-opacity duration-500 ${showFeaturedTitle ? "opacity-100" : "opacity-0"}`}>
-    รายการอาหาร
-  </h1>
-  <div className={`grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity duration-500 ${showProducts ? "opacity-100" : "opacity-0"}`}>
-    {products.map((product) => (
-      <div key={product.id} className="border border-gray-200 rounded-lg shadow-lg p-6 bg-white transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl flex flex-col h-full">
-        <div className="flex justify-center mb-4">
-          <Image src={product.imageUrl} alt={product.name} width={300} height={300} className="rounded-lg object-cover" />
+          <span className="text-xs text-gray-500 ml-1">(0)</span>
         </div>
-        <div className="flex flex-col flex-grow">
-          <h2 className="text-black text-center text-lg font-semibold mb-2">{product.name}</h2>
-          <p className="text-gray-600 text-center mb-4">{product.description}</p>
-          <p className="text-black text-center font-bold mb-4">ราคา: {product.price} บาท</p>
-        </div>
-        <button
-          onClick={() => handleAddToCart(product)}
-          className="bg-[#000000] text-white py-2 px-4 rounded-lg hover:bg-[#27251f] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 active:bg-black transition-colors duration-300 w-full mt-auto"
-        >
-          สั่งซื้อ
-        </button>
-      </div>
-    ))}
-  </div>
-</main>
-
       </div>
     </div>
-  );
+  ))}
+</div>
+</main>
+
+
+);
+
 }

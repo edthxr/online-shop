@@ -22,10 +22,11 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="container mx-auto fixed top-0 left-0 right-0 bg-white shadow-lg z-10 p-5 flex justify-between items-center">
+            <nav className="container mx-auto fixed top-0 left-0 right-0 bg-white border-b z-10  flex justify-between items-center">
                 <div className="text-black/80 text-3xl font-bold font-sans">
-                    <Link href="/" className="hover:text-gray-300 transition duration-300"> WUTTINAN CAFE.</Link>
+                    <Link href="/" className="hover:text-gray-300 transition duration-300"></Link>
                 </div>
+
 
                 {/* Hamburger Icon for Mobile */}
                 <div className="md:hidden" onClick={toggleMenu}>
@@ -44,10 +45,10 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <ul className={`hidden md:flex md:space-x-8 text-black font-sans text-lg font-thin`}>
                     <li className="my-2">
-                        <Link href="/" className="hover:text-gray-300 transition duration-300">หน้าหลัก</Link>
+                        <Link href="/" className="hover:text-gray-300 transition text-sm duration-300">Home</Link>
                     </li>
                     <li className="my-2">
-                        <Link href="/" onClick={handleScrollToProducts} className="hover:text-gray-300 transition duration-300">เครื่องดื่ม</Link>
+                        <Link href="/" onClick={handleScrollToProducts} className="hover:text-gray-300 transition   text-sm duration-300">Products</Link>
                     </li>
                     <li className="my-2 flex items-center">
                         <Link href="/Cart" className="hover:text-gray-300 transition duration-300 relative">
@@ -60,7 +61,7 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li className="my-2">
-                        <Link href="/contact" className="hover:text-gray-700 transition duration-300">ติดต่อ</Link>
+                        <Link href="/contact" className="hover:text-gray-700 transition  text-sm duration-300">Contact</Link>
                     </li>
                 </ul>
             </nav>

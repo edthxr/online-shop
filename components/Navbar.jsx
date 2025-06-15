@@ -6,7 +6,7 @@ import { useCart } from "../components/CartContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { totalQuantity, isCartBumping } = useCart();
+    const { getTotalQuantity, isCartBumping } = useCart();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -28,7 +28,7 @@ export default function Navbar() {
           {/* Logo or Brand Name */}
           <div className="text-black/80 text-2xl font-bold font-sans">
             <Link href="/" className="hover:text-gray-400 transition duration-300">
-              
+              JENNY
             </Link>
           </div>
 
@@ -45,10 +45,10 @@ export default function Navbar() {
             <li className="relative">
               <Link href="/Cart" className="hover:text-gray-500 transition duration-300 flex items-center gap-1">
                 <FaShoppingCart className={`text-xl ${isCartBumping ? "cart-bump" : ""}`} />
-                {totalQuantity > 0 && (
-                  <span className="absolute -top-2 -right-3 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                    {totalQuantity}
-                  </span>
+           {getTotalQuantity() > 0 && (
+  <span className="absolute -top-2 -right-3 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+    {getTotalQuantity()}
+  </span>
                 )}
               </Link>
             </li>
@@ -63,9 +63,9 @@ export default function Navbar() {
               <span className="w-6 h-0.5 bg-black" />
               <span className="w-6 h-0.5 bg-black" />
               <span className="w-6 h-0.5 bg-black" />
-              {totalQuantity > 0 && (
+            {getTotalQuantity() > 0 && (
                 <span className="absolute -top-2 -right-3 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                  {totalQuantity}
+                  {getTotalQuantity}
                 </span>
               )}
             </button>

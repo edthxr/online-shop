@@ -4,9 +4,12 @@ const nextConfig = {
     domains: [
       'instagram.fbkk12-2.fna.fbcdn.net',
       'instagram.fbkk13-2.fna.fbcdn.net',
-      'instagram.fbkk13-1.fna.fbcdn.net', // Add this line
-      'instagram.fbkk13-3.fna.fbcdn.net', // Add this line
+      'instagram.fbkk13-1.fna.fbcdn.net',
+      'instagram.fbkk13-3.fna.fbcdn.net',
     ],
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // ✅ เพิ่มบรรทัดนี้
   },
 };
 

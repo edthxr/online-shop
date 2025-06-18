@@ -81,7 +81,7 @@ return (
       <Typography variant="h5" component="h1" fontWeight="normal" fontFamily={"Mitr"}>
         จัดการสินค้า
       </Typography>
-      <Link href="/admin/products/form">
+ <Link href="/admin/products/form/new">
         <Button variant="contained" color="primary" startIcon={<AddIcon />}>
           เพิ่มสินค้า
         </Button>
@@ -143,7 +143,7 @@ return (
                 />
               </TableCell>
          <TableCell align="center">
-          <Link href={`/admin/products/form?id=${p.id}`}>
+          <Link href={`/admin/products/form/${p.id}`}>
               <IconButton
             size="small"
             sx={{

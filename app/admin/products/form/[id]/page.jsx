@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import {
   Container,
   Typography,
@@ -23,9 +23,10 @@ import SpinnerLoader from "@/components/SpinnerLoader";
 
 export default function ProductFormPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const isEdit = !!searchParams.get("id");
-
+  const params = useParams();
+  const id = params?.id; // เช่น "new", หรือ product id จริง
+  const isEdit = id !== "new"; // ✅ ถ้าเป็น new → เพิ่มใหม่, อย่างอื่นคือแก้ไข
+  
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -62,23 +63,22 @@ export default function ProductFormPage() {
       updatedAt: new Date(),
     };
       try {
-        if (isEdit) {
-          const id = searchParams.get("id");
-          await updateProduct(id, payload);
-          await Swal.fire({
-            icon: 'success',
-            title: 'แก้ไขสินค้าเรียบร้อย',
-            confirmButtonText: 'ตกลง',
-          });
-        } else {
-          payload.createdAt = new Date();
-          await addProduct(payload);
-          await Swal.fire({
-            icon: 'success',
-            title: 'เพิ่มสินค้าเรียบร้อย',
-            confirmButtonText: 'ตกลง',
-          });
-        }
+     if (isEdit) {
+      await updateProduct(id, payload); 
+      await Swal.fire({
+        icon: 'success',
+        title: 'แก้ไขสินค้าเรียบร้อย',
+        confirmButtonText: 'ตกลง',
+      });
+    } else {
+      payload.createdAt = new Date();
+      await addProduct(payload);
+      await Swal.fire({
+        icon: 'success',
+        title: 'เพิ่มสินค้าเรียบร้อย',
+        confirmButtonText: 'ตกลง',
+      });
+    }
 
         router.push("/admin/products");
 
@@ -93,34 +93,32 @@ export default function ProductFormPage() {
       }
     };
 
-    useEffect(() => {
-      const loadProduct = async () => {
-        if (!isEdit) return;
+useEffect(() => {
+  const loadProduct = async () => {
+    if (!isEdit) return;
 
-          setIsLoading(true); 
-        const id = searchParams.get("id");
-        const ref = doc(db, "products", id);
-        const snap = await getDoc(ref);
-        if (snap.exists()) {
-          const data = snap.data();
-          setName(data.name || "");
-          setDescription(data.description || "");
-          setPrice(data.price || "");
-          setSalePrice(data.salePrice || "");
-          setStock(data.stock || "");
-          setColor(data.color || "");
-          setSize(data.size || "M");
-          setType(data.type || "เสื้อยืด");
-          setFeatureImageUrl(data.featureImageUrl || "");
-          setImageUrlsText((data.imageUrls || []).join("\n"));
-          setIsNew(!!data.isNew);
-        }
-          setIsLoading(false); 
-      };
-      
+    setIsLoading(true);
+    const ref = doc(db, "products", id);
+    const snap = await getDoc(ref);
+    if (snap.exists()) {
+      const data = snap.data();
+      setName(data.name || "");
+      setDescription(data.description || "");
+      setPrice(data.price || "");
+      setSalePrice(data.salePrice || "");
+      setStock(data.stock || "");
+      setColor(data.color || "");
+      setSize(data.size || "M");
+      setType(data.type || "เสื้อยืด");
+      setFeatureImageUrl(data.featureImageUrl || "");
+      setImageUrlsText((data.imageUrls || []).join("\n"));
+      setIsNew(!!data.isNew);
+    }
+    setIsLoading(false);
+  };
 
-      loadProduct();
-    }, [isEdit, searchParams]);
+  loadProduct();
+}, [isEdit, id]);
 
 if (isEdit && isLoading) {
   return <SpinnerLoader />;

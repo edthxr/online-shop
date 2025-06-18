@@ -1,15 +1,14 @@
+// ❌ ห้ามมี "use client" ที่นี่
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import { CartProvider } from "@/components/CartContext";
-import Footer from "@/components/Footer";
-
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -43,19 +42,11 @@ export const metadata = {
   },
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#ffffff] mb-10`}
-      >
-        <CartProvider>
-          <Navbar />
-          {children} {/* นำเข้าทุกหน้าไว้ที่นี่ */}
-        </CartProvider>
-   
-        <Footer />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white mb-10`}>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

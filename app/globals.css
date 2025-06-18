@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&family=Noto+Sans+Thai:wght@100..900&family=Outfit:wght@100..900&display=swap');
 
 
 @tailwind base;
@@ -74,6 +75,22 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+
+.inputkub {
+  font-family: "Mitr",   sans-serif !important;
+}
+
+.fontTH {
+  font-family: "Mitr",   sans-serif !important;
+  font-weight: 300 !important;
+}
+
+.inputkub:focus {
+  outline: none; /* ลบเส้นฟ้า default ของ browser */
+  border-color: #23004a; /* สีที่ต้องการเมื่อโฟกัส */
+  box-shadow: 0 0 0 1px rgba(130, 0, 211, 0.551); /* เงาเพิ่มความชัด */
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
@@ -91,5 +108,7 @@ body {
     padding: 0.5rem 1rem;
     /* ปรับ padding */
   }
+
+
 }
 

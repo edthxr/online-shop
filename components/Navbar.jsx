@@ -6,7 +6,7 @@ import { useCart } from "../components/CartContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-    const { getTotalQuantity, isCartBumping } = useCart();
+  const { getTotalQuantity, isCartBumping } = useCart();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,6 +21,8 @@ export default function Navbar() {
     }, 100);
   };
 
+  const isAdmin = true; 
+
   return (
     <>
       <nav className="w-full fixed top-0 left-0 right-0 bg-white border-b z-50">
@@ -33,6 +35,13 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 text-black font-sans text-base items-center">
+            {isAdmin && (
+              <li>
+                <Link href="/admin" className="hover:text-blue-600 font-semibold transition duration-300">
+                  Dashboard
+                </Link>
+              </li>
+            )}
             <li>
               <Link href="/" className="hover:text-gray-500 transition duration-300">Home</Link>
             </li>
